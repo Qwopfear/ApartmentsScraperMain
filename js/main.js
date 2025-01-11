@@ -1,11 +1,8 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
-const mainServiceUrl = 'http://localhost:8081/api/apartments/phoneNumber'
-const args = process.argv.slice(2);
 
-console.log(args);
-
+console.log("Script is run")
 function randomDelay(min = 1500, max = 4000) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -113,10 +110,13 @@ async function saveCookies(page) {
     }
 }
 
+const mainServiceUrl = 'http://localhost:8081/api/apartments/phoneNumber'
+const args = process.argv.slice(2);
+
 (async () => {
     const browser = await setupBrowser({headless : true});
     const page = await browser.newPage();
-    const link = 'https://www.otodom.pl/pl/oferta/funkcjonalne-3-pok-do-remontu-ul-grzybowska-en-ID4tMq3.html'
+    const link = args[0]
     try {
         await configurePage(page);
 
@@ -162,7 +162,7 @@ async function saveCookies(page) {
     } finally {
         await browser.close();
     }
-});
+})();
 
 // (async () => {
 //     const browser = await puppeteer.launch({ headless: false });

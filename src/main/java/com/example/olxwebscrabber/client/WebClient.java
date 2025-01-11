@@ -1,12 +1,7 @@
 package com.example.olxwebscrabber.client;
 
-import java.util.List;
+public interface WebClient {
 
-public interface OlxClient {
-
-    /**
-    
-     */
-    List<String> parseOlxPage();
+    String parsePage(String url);
 
 }

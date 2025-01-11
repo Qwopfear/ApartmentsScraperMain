@@ -1,4 +1,7 @@
 package com.example.olxwebscrabber.dto;
 
-public record PhoneNumberDto() {
+public record PhoneNumberDto(
+        String link,
+        String phoneNumber
+) {
 }
