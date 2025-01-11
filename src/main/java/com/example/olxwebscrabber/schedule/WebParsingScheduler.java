@@ -47,12 +47,11 @@ public class WebParsingScheduler {
         }
     }
 
-//    @Scheduled(fixedRate = 10_000)
-//    public void parsePhoneNumbers() {
-//        var apartments = apartmentService.getApartmentsWithoutPhoneNumber();
-//        apartments.forEach(el -> phoneNumberParsingExecutor.submit(() -> runPhoneNumberProcess(el.getId(), el.getSource())));
-//
-//    }
+    @Scheduled(fixedRate = 10_000)
+    public void parsePhoneNumbers() {
+        var apartments = apartmentService.getApartmentsWithoutPhoneNumber();
+        apartments.forEach(el -> phoneNumberParsingExecutor.submit(() -> runPhoneNumberProcess(el.getId(), el.getSource())));
+    }
 
 
     private void runPhoneNumberProcess(String link, Source source) {
